@@ -27,7 +27,8 @@ sudo yum install -y readline-devel \
     xorg-x11-server-devel libX11-devel libXt-devel \
     curl-devel \
     gcc-c++ gcc-gfortran \
-    zlib-devel bzip2 bzip2-libs
+    zlib-devel bzip2 bzip2-libs \
+    libjpeg-turbo-devel 
 # workaround for making R build work
 # issue seems similar to https://stackoverflow.com/questions/40639138/configure-error-installing-r-3-3-2-on-ubuntu-checking-whether-bzip2-support-suf
 # sudo yum install -y R 
@@ -40,9 +41,10 @@ cp /usr/lib64/libgfortran.so.4 lib/
 cp /usr/lib64/libgomp.so.1 lib/
 cp /usr/lib64/libquadmath.so.0 lib/
 cp /usr/lib64/libstdc++.so.6 lib/
+cp /usr/lib64/libpcre2-8.so.0 lib/
 sudo yum install -y openssl-devel libxml2-devel
 ./bin/Rscript -e 'install.packages(c("httr", "aws.s3", "logging"), repos="http://cran.r-project.org")'
-./bin/Rscript -e 'install.packages(c("tidyverse","ggplot2","reshape2","doParallel","memisc","mice","missForest","Amelia","Hmisc"), repos="http://cran.r-project.org")'
+# ./bin/Rscript -e 'install.packages(c("tidyverse","ggplot2","reshape2","doParallel","memisc","mice","missForest","Amelia","Hmisc"), repos="http://cran.r-project.org")'
 
 mkdir -p ${BUILD_DIR}/bin/
 cp -r bin/ lib/ etc/ library/ doc/ modules/ share/ ${BUILD_DIR}/bin/
