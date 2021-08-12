@@ -34,7 +34,7 @@ function integrationTest {
 }
 
 regions=(
-          us-east-1
+          eu-west-1
         )
 
 for region in "${regions[@]}"

@@ -12,7 +12,8 @@ cd ${BUILD_DIR}/layer/
 cp -r ${BASE_DIR}/../r/build/bin/* R/
 rm -r R/doc/manual/
 #remove some libraries to save space
-recommended=(boot class cluster codetools foreign KernSmooth lattice MASS Matrix mgcv nlme nnet rpart spatial survival)
+# recommended=(boot class cluster codetools foreign KernSmooth lattice MASS Matrix mgcv nlme nnet rpart spatial survival)
+recommended=(tidyverse ggplot2 reshape2 aws.s3 doParallel parallel memisc mice missForest Amelia Hmisc)
 for package in "${recommended[@]}"
 do
    rm -r R/library/${package}/
