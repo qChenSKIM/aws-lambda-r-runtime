@@ -16,7 +16,7 @@ R_DIR=/opt/R/
 
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
-wget https://cran.r-project.org/src/base/R-3/R-${VERSION}.tar.gz
+wget https://cran.r-project.org/src/base/R-4/R-${VERSION}.tar.gz
 sudo mkdir ${R_DIR}
 sudo chown $(whoami) ${R_DIR}
 tar -xf R-${VERSION}.tar.gz

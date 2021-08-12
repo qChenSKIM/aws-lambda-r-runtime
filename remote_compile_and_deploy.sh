@@ -30,7 +30,7 @@ instance_id=$(aws ec2 run-instances --image-id ami-657bd20a --count 1 --instance
     --instance-initiated-shutdown-behavior terminate --iam-instance-profile Name='"'${PROFILE}'"' \
     --user-data '#!/bin/bash
 yum install -y git
-git clone https://github.com/bakdata/aws-lambda-r-runtime.git
+git clone https://github.com/qChenSKIM/aws-lambda-r-runtime.git
 cd aws-lambda-r-runtime/r/
 ./compile.sh '"$VERSION"'
 cd build/bin/
@@ -41,6 +41,10 @@ cd ../../../awspack/
 cd build/bin/
 zip -r awspack-'"$VERSION"'.zip .
 aws s3 cp awspack-'"$VERSION"'.zip s3://'"$BUCKET"'/R-'"$VERSION"'/
+cd ~
+cd aws-lambda-r-runtime/recommended/
+./buid.sh
+./deploy.sh '"$VERSION"'
 shutdown -h now' \
     --query 'Instances[0].InstanceId' --output text)
 
