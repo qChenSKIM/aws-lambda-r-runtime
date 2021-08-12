@@ -13,6 +13,7 @@ fi
 BASE_DIR=$(pwd)
 BUILD_DIR=${BASE_DIR}/build/
 R_DIR=/opt/R/
+VERSION=4.1.0
 
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
@@ -29,12 +30,13 @@ sudo yum install -y readline-devel \
     zlib-devel bzip2 bzip2-libs
 # workaround for making R build work
 # issue seems similar to https://stackoverflow.com/questions/40639138/configure-error-installing-r-3-3-2-on-ubuntu-checking-whether-bzip2-support-suf
-sudo yum install -y R 
+# sudo yum install -y R 
+sudo amazon-linux-extras install -y R4
 
 cd ${R_DIR}
 ./configure --prefix=${R_DIR} --exec-prefix=${R_DIR} --with-libpth-prefix=/opt/ --enable-R-shlib
 make
-cp /usr/lib64/libgfortran.so.3 lib/
+cp /usr/lib64/libgfortran.so.4 lib/
 cp /usr/lib64/libgomp.so.1 lib/
 cp /usr/lib64/libquadmath.so.0 lib/
 cp /usr/lib64/libstdc++.so.6 lib/
