@@ -42,6 +42,7 @@ cp /usr/lib64/libquadmath.so.0 lib/
 cp /usr/lib64/libstdc++.so.6 lib/
 sudo yum install -y openssl-devel libxml2-devel
 ./bin/Rscript -e 'install.packages(c("httr", "aws.s3", "logging"), repos="http://cran.r-project.org")'
+./bin/Rscript -e 'install.packages(c("tidyverse","ggplot2","reshape2","doParallel","memisc","mice","missForest","Amelia","Hmisc"), repos="http://cran.r-project.org")'
 
 mkdir -p ${BUILD_DIR}/bin/
 cp -r bin/ lib/ etc/ library/ doc/ modules/ share/ ${BUILD_DIR}/bin/
